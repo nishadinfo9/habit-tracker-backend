@@ -2,7 +2,6 @@ import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { AsyncHandler } from "../utils/AsyncHandler.js";
-import uploadOnCloudinary from "../utils/cloudinary.js";
 import jwt from "jsonwebtoken";
 
 const generateAccessAndRefreshToken = async (userId) => {
@@ -36,22 +35,10 @@ const registerUser = AsyncHandler(async (req, res) => {
     throw new ApiError(401, "user already exist");
   }
 
-  // const avatarFile = req?.files?.avatar[0]?.path;
-  // if (!avatarFile) {
-  //   throw new ApiError("avatar does not exist");
-  // }
-  // console.log(avatarFile);
-  // const uploadUrl = await uploadOnCloudinary(avatarFile);
-
-  // if (!uploadUrl) {
-  //   throw new ApiError(401, "avatar upload faild");
-  // }
-
   const user = await User.create({
     fullName,
     email,
     password,
-    avatar: "",
   });
 
   const createUser = await User.findById(user._id).select("-password");
