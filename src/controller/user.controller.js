@@ -203,7 +203,7 @@ const currentPasswordChange = AsyncHandler(async (req, res) => {
 const currentUser = AsyncHandler(async (req, res) => {
   return res
     .status(200)
-    .json(new ApiResponse(200, req.user, "current user fetch successfully"));
+    .json(new ApiResponse(200, res.user, "current user fetch successfully"));
 });
 
 export {
