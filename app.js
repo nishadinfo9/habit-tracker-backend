@@ -8,7 +8,7 @@ dotenv.config({ path: "./.env" });
 const app = express();
 const allowOrigins = [
   "http://localhost:5173",
-  "https://habits-tracker-pied.vercel.app",
+  "https://habit-tracker-backend-production-182e.up.railway.app",
 ];
 
 app.use(
